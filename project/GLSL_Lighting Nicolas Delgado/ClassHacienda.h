@@ -13,7 +13,7 @@ using namespace std;
 
 class ClassHacienda
 {
-	AbrirMalla nombreAsignado = AbrirMalla("./mallas/down_mesh/casa/source/casa_obj/Mineways2Skfb.obj");
+	AbrirMalla nombreAsignado = AbrirMalla("./mallas/down_mesh/casa/source/casa_obj/Medieval_House2.obj");
 
 public:
 	ClassHacienda();
