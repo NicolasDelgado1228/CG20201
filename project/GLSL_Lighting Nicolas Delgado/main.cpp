@@ -132,7 +132,7 @@ public:
 
         //posiciona y dibuja la huerta de zanahorias
         glPushMatrix();
-        glTranslatef(-3.2f, 2.0f, 2.8f);
+        glTranslatef(-3.2f, 2.15f, 2.8f);
         glScalef(4.0f, 4.0f, 4.0f);
         miZana->DibujarZanahoria();
         glPopMatrix();
@@ -153,14 +153,15 @@ public:
         miTree->DibujarTree();
         glPopMatrix();
 
-        /*
+        
         //posiciona y dibuja la hacienda
         glPushMatrix();
-        glTranslatef(0.0f, 2.8f, 0.0f);         ESTA MALLA GENERA ERRORES
-        glScalef(0.5f, 0.5f, 0.5f);
+        glTranslatef(3.0f, 3.5f, -2.5f);         //ESTA MALLA GENERA ERRORES
+        glScalef(1.8f, 1.8f, 1.8f);
+        glRotated(-50.0f,0.0f,1.0f,0.0f);
         miHacienda->DibujarHacienda();
         glPopMatrix();
-        */
+        
 
         //posiciona y dibuja la fogata
         glPushMatrix();
