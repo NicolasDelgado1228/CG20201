@@ -18,17 +18,17 @@
       <canvas id="c"></canvas>
       <script type="module">
         import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/build/three.module.js';
-import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/controls/OrbitControls.js';
-import {OBJLoader2} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/OBJLoader2.js';
-import {MTLLoader} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/MTLLoader.js';
-import {MtlObjBridge} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/obj2/bridge/MtlObjBridge.js';
+        import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/controls/OrbitControls.js';
+        import {OBJLoader2} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/OBJLoader2.js';
+        import {MTLLoader} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/MTLLoader.js';
+        import {MtlObjBridge} from 'https://threejsfundamentals.org/threejs/resources/threejs/r115/examples/jsm/loaders/obj2/bridge/MtlObjBridge.js';
 
 function main() {
   const canvas = document.querySelector('#c');
   const renderer = new THREE.WebGLRenderer({canvas});
 
   const fov = 45;
-  const aspect = 2;  // the canvas default
+  const aspect = 2;  
   const near = 0.1;
   const far = 100;
   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
@@ -71,8 +71,8 @@ function main() {
   }
 
   {
-    const skyColor = 0xB1E1FF;  // light blue
-    const groundColor = 0xB97A20;  // brownish orange
+    const skyColor = 0xB1E1FF;  
+    const groundColor = 0xB97A20; 
     const intensity = 1;
     const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
     scene.add(light);
@@ -89,9 +89,6 @@ function main() {
   }
 
   {
-
-
-    const texture = new THREE.TextureLoader().load( "texPuente.jpg" );
     const loader = new THREE.ObjectLoader();
     const texturaCasa = new THREE.TextureLoader().load( "texturas/texturaCasa.png" );
     const texturaVaca = new THREE.TextureLoader().load( "texturas/cow.png" );
@@ -102,14 +99,15 @@ function main() {
     const texturaFogata = new THREE.TextureLoader().load( "./CG20201/project/GLSL_Lighting Nicolas Delgado/mallas/down_mesh/fogatica/Fireplace/texture/ohniste4UVcomplet1.png" );
     var colorVasija = new THREE.MeshBasicMaterial( { color: 0xCE7800, side: THREE.DoubleSide } );
 
+    //Malla del piso, con textura
     loader.load('mallas/piso.json', function(mesh){
-      //mesh.material = new THREE.MeshPhongMaterial({map: texture});
       mesh.material = new THREE.MeshPhongMaterial( { map: texturaPiso } );
       scene.add(mesh);
       mesh.scale.set(50,50,50);
       mesh.position.set(0,-7,0);
     });
-   
+
+    //Malla del ternero (es de minecraft)
     loader.load('mallas/vacas.json', function(mesh){
       mesh.material = new THREE.MeshPhongMaterial( { map: texturaVaca } );
       scene.add(mesh);
@@ -118,6 +116,9 @@ function main() {
       mesh.rotation.set(0,-0.5,0);
     });
 
+    //Malla de la vaca (es sacado de Minecraft)
+    //También se hace el posicionamiento y el escalamiento de la malla
+    //Se supone que debería aparecer con textura pero por razones desconocidas no aparece
     loader.load('mallas/vacas.json', function(mesh){
       mesh.material = new THREE.MeshPhongMaterial( { map: texturaVaca } );
       scene.add(mesh);
@@ -126,6 +127,8 @@ function main() {
       mesh.rotation.set(0,0.5,0);
     });
 
+    //Malla de la Hacienda, con textura
+    //También se hace el posicionamiento y el escalamiento de la malla
     loader.load('mallas/casa.json', function(mesh){
       mesh.material = new THREE.MeshPhongMaterial( { map: texturaCasa } );
       scene.add(mesh);
@@ -134,12 +137,16 @@ function main() {
       mesh.rotation.set(0,-1,0);
     });
 
+    //Malla de la vasija (objeto hecho a mano en Blender)
+    //También se hace el posicionamiento de la malla
     loader.load('mallas/vasija.json', function(mesh){
       mesh.color = 0xCE7800
       mesh.position.set(-10,0.5,5);
       scene.add(mesh);
     });
 
+    //Malla de uno de los pinos, el mediano
+    //También se hace el posicionamiento y el escalamiento de la malla
     loader.load('mallas/pino.json', function(mesh){
       //mesh.color = 0xCE7800
       mesh.position.set(-20,0,-55);
@@ -148,6 +155,8 @@ function main() {
 
     });
 
+    //Malla de uno de los pinos, el pequeño
+    //También se hace el posicionamiento y el escalamiento de la malla
     loader.load('mallas/pino.json', function(mesh){
       //mesh.color = 0xCE7800
       mesh.position.set(5,0,-45);
@@ -156,6 +165,8 @@ function main() {
 
     });
 
+    //Malla de uno de los pinos, el grande
+    //También se hace el posicionamiento y el escalamiento de la malla
     loader.load('mallas/pino.json', function(mesh){
       //mesh.color = 0xCE7800
       mesh.position.set(-60,0,-40);
@@ -164,6 +175,8 @@ function main() {
 
     });
 
+    //Malla de uno de los arboles (no pino), el pequeño
+    //También se hace el posicionamiento y el escalamiento de la malla
     loader.load('mallas/arbol.json', function(mesh){
       //mesh.color = 0xCE7800
       mesh.position.set(-30,0,-35);
@@ -172,6 +185,8 @@ function main() {
 
     });
 
+    //Malla de uno de los arboles (no pino), el grande, al lado de la casa
+    //También se hace el posicionamiento y el escalamiento de la malla
     loader.load('mallas/arbol.json', function(mesh){
       //mesh.color = 0xCE7800
       mesh.position.set(15,0,-55);
@@ -180,6 +195,9 @@ function main() {
 
     });
 
+    //Malla de la fogata
+    //Tambien se hace el posicionamiento y escalamiento de la malla
+    //Se supone que debería aparecer con textura pero por razones desconocidas no aparece
     loader.load('mallas/fogata.json', function(mesh){
       //mesh.color = 0xCE7800
       mesh.material = new THREE.MeshPhongMaterial( { map: texturaFogata } );
